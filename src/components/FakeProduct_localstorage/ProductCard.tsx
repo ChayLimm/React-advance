@@ -17,7 +17,6 @@ export default function ProductCard({ product }: CardProp) {
 
       <div className="flex flex-col items-start gap-1 p-2">
         <h1 className="font-bold text-start">{product.title}</h1>
-
       </div>
     </div>
   );

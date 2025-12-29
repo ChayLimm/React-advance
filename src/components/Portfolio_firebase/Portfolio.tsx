@@ -1,7 +1,7 @@
 // Portfolio.tsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { 
   GithubOutlined, 
   LinkedinOutlined, 
@@ -113,8 +113,8 @@ export default function Portfolio() {
 
   if (!user) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
-        <Card className="max-w-md text-center bg-gray-800 border-gray-700 shadow-2xl">
+      <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-gray-900 to-gray-800">
+        <Card className="custom-card max-w-md text-center bg-gray-800 border-gray-700 shadow-2xl">
           <div className="text-5xl mb-6 animate-bounce">🚀</div>
           <h2 className="text-2xl font-bold text-white mb-2">No Portfolio Data Found</h2>
           <p className="text-gray-400 mb-6">Create your amazing portfolio in just a few clicks</p>
@@ -152,16 +152,6 @@ export default function Portfolio() {
                 {user.username}
               </span>
             </motion.div>
-            
-            {/* <Button
-              type="primary"
-              ghost
-              icon={<BuildOutlined />}
-              onClick={() => navigate("/dashboard")}
-              className="border-blue-400 text-blue-400 hover:bg-blue-400/10 hover:border-blue-300 transition-all"
-            >
-              Edit Portfolio
-            </Button> */}
           </div>
         </div>
       </nav>
@@ -315,7 +305,7 @@ export default function Portfolio() {
                   whileHover={{ y: -8 }}
                 >
                   <Card
-                    className="h-full bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group"
+                    className="custom-card h-full bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group"
                     hoverable
                   >
                     <div className="text-center">
@@ -368,7 +358,7 @@ export default function Portfolio() {
                         <div className="absolute left-6 top-24 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-transparent"></div>
                       )}
                       
-                      <Card className="bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 ml-10">
+                      <Card className="custom-card bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 ml-10">
                         <div className="absolute -left-10 top-6 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
                           <CalendarOutlined className="text-xl text-white" />
                         </div>
@@ -506,7 +496,7 @@ export default function Portfolio() {
                 >
                   <Card
                     hoverable
-                    className="h-full bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500 overflow-hidden group shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
+                    className="custom-card h-full bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-blue-500 overflow-hidden group shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
                     cover={
                       <div className="h-56 overflow-hidden relative bg-gradient-to-br from-gray-800 to-gray-900">
                         {project.imageUrl ? (
@@ -639,7 +629,7 @@ export default function Portfolio() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <Card className="text-center bg-gray-800/30 backdrop-blur-sm border-gray-700 hover:border-blue-500 transition-all duration-300">
+                <Card className="custom-card text-center bg-gray-800/30 backdrop-blur-sm border-gray-700 hover:border-blue-500 transition-all duration-300">
                   <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
                     <div className="text-2xl text-white">{stat.icon}</div>
                   </div>
@@ -663,7 +653,7 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700 shadow-2xl relative overflow-hidden">
+            <Card className="custom-card bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700 shadow-2xl relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10"></div>
               <div className="relative z-10 text-center">
                 <h2 className="text-5xl font-bold text-white mb-6">Ready to work together?</h2>
@@ -818,24 +808,14 @@ export default function Portfolio() {
         )}
       </Modal>
 
-      {/* Add custom animations to global CSS */}
-      {/* <style jsx global>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-        @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 3s ease infinite;
-        }
-      `}</style> */}
+      <style>{`
+      .custom-card {
+  background-color: #1f2937 !important; /* gray-800 */
+  border-color: #374151 !important; /* gray-700 */
+}
+      `}</style>
+            
     </div>
   );
 }
+
